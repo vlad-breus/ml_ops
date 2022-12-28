@@ -3,7 +3,7 @@ import pickle
 
 # assets
 target_classes = ['setosa', 'versicolor', 'virginica']
-model = pickle.load(open('assets/iris_classifier/predictor.pkl', 'rb'))
+model = pickle.load(open('./assets/iris_classifier/predictor.pkl', 'rb'))
 
 app = Flask(__name__)
 
