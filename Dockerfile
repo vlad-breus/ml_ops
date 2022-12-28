@@ -1,6 +1,6 @@
 FROM ubuntu
 
-LABEL classifier_version="0.12"
+LABEL classifier_version="0.15"
 LABEL owner="Vlad"
 
 # install libraries and packages
@@ -11,17 +11,20 @@ python3-numpy \
 python3-scipy \
 python3-pip
 
-RUN pip install scikit-learn flask-restful
-
 # copy model and service code from current directory
 COPY . /model
+WORKDIR /model/app
+
+# install dependencies
+RUN pip install -r /model/requirements.txt 
+#RUN pip install flask-restful
 
 # expose the port for API
-EXPOSE 8100
+EXPOSE 5000
 
 # set environment variables
 ENV ml_debug_level=1
 ENV environment PRODUCTION
 
 # run the api, replace later with Flask app running
-CMD ["flask", "run"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

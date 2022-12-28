@@ -1,9 +1,11 @@
 from flask import Flask, request
-import pickle 
+import pickle
+import os 
 
 # assets
+filepath = './assets/iris_classifier/predictor.pkl'
 target_classes = ['setosa', 'versicolor', 'virginica']
-model = pickle.load(open('./assets/iris_classifier/predictor.pkl', 'rb'))
+model = pickle.load(open(filepath, 'rb'))
 
 app = Flask(__name__)
 
@@ -24,3 +26,6 @@ def predict():
     else:
         return 'Error!'
         # add error handling
+        
+if __name__ == "__main__":
+    app.run(debug=True)
