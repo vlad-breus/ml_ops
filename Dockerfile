@@ -6,10 +6,7 @@ LABEL owner="Vlad"
 # install libraries and packages
 RUN apt-get update && apt-get install -y \
 python3-pip \
-python3-dev \
-python3-numpy \
-python3-scipy \
-python3-pip
+python3-dev
 
 # copy model and service code from current directory
 COPY . /model
@@ -17,7 +14,6 @@ WORKDIR /model/app
 
 # install dependencies
 RUN pip install -r /model/requirements.txt 
-#RUN pip install flask-restful
 
 # expose the port for API
 EXPOSE 5000

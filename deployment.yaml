@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-deploy
+spec:
+  selector:
+    matchLabels:
+      app:  ml-service
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app:  ml-service
+    spec:
+      containers:
+      - name: ml-service
+        image:  ml_service
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
