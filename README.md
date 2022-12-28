@@ -1,12 +1,12 @@
 Simple repo for learning ML Ops to run a ML model as microservice using Flask
 
-To do:
-- add some simple model (iris / digit classification)
-- add an endpoint to return the predictions given the inputs and handle exceptions
-- make the API run as a service (use versioning in the paths)
-- dockerize the API
+What's included:
+- simple code for retraining the model
+- flask API (development configuration, not production-ready yet)
+- Dockerfile for building an image
+- Deployment configuration for testing running the cluster in minikube (local Kubernetes)
 
-
-Optional to do:
-- test the deployment / updates on demo servers
+Backlog:
+- maybe move from ubuntu to lighter Docker image
+- add monitoring capability (via Prometheus etc.)
 - potentially add various endpoints to test serving image / audio data
